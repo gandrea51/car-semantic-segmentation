@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI Car Segmentation</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <header class="hero-header">
+            <div class="hero-content">
+                <span class="hero-badge">Computer Vision • Semantic Segmentation</span>
+                <h1 class="demo-title">AI Car Segmentation</h1>
+                <p class="hero-subtitle">Upload an image, select a neural network and generate pixel-wise semantic segmentation masks in real time.</p>
+            </div>
+        </header>
+
+        <section class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>Semantic Segmentation</h3>
+                <p>Analyze vehicle images using state-of-the-art deep learning architectures including <strong>UNet + MiT-B2</strong> and <strong>DeepLabV3+</strong>. The system 
+                    identifies and segments vehicle components such as bodywork, wheels, windows, headlights and other structural parts at pixel level.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Model Insights</h3>
+                <p>Generate segmentation overlays together with <strong>confidence maps</strong>, <strong>entropy maps</strong> and runtime statistics. Visualize prediction certainty, 
+                    uncertainty regions and inference performance in real time.</p>
+            </div>
+        </section>
+
+        <section class="control-panel">
+            <div class="panel-header">
+                <h2>Inference Pipeline</h2>
+                <p>Upload an image, choose a segmentation model and generate predictions in real time.</p>
+            </div>
+
+            <div class="upload-area">
+                <input type="file" id="file" accept="image/*">
+                <label for="file" class="upload-box">
+                    <span class="upload-icon">📁</span>
+                    <span class="upload-title">Upload Vehicle Image</span>
+                    <span class="upload-subtitle">PNG, JPG or JPEG</span>
+                </label>
+                <p id="selectedFile">No image selected</p>
+            </div>
+
+            <div class="model-selector">
+                <label>Segmentation Model</label>
+                <select id="modelSelect">
+                    <option value="unetxmit">UNet + MiT-B2</option>
+                    <option value="deeplab">DeepLabV3+</option>
+                    <option value="unetxresnext">UNet + ResNeXt</option>
+                </select>
+            </div>
+
+            <div class="action-buttons">
+                <button id="inferBtn">🚀 Run Inference</button>
+                <button id="metricsBtn">📊 Show Metrics</button>
+                <button id="hideMetricsBtn" style="display:none;">✖ Hide Metrics</button>
+            </div>
+
+            <div id="loading" class="loading-container" style="display:none;">
+                <div class="loader"></div>
+                <span>Running semantic segmentation...</span>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-header">
+                <h2>Inference Results</h2>
+                <p>Explore model predictions, confidence distribution and uncertainty estimation.</p>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <span class="result-badge">Segmentation</span>
+                        <h3>Overlay</h3>
+                    </div>
+                    <div class="image-container">
+                        <img id="overlayImg" alt="Segmentation Overlay" src="/static/img/placeholder.png">
+                    </div>
+                    <button id="downloadOverlayBtn" class="download-btn" style="display:none;">Download Overlay</button>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <span class="result-badge">Confidence</span>
+                        <h3>Confidence Map</h3>
+                    </div>
+                    <div class="image-container">
+                        <img id="confImg" alt="Confidence Map" src="/static/img/placeholder.png">
+                    </div>
+                    <button id="downloadConfBtn" class="download-btn" style="display:none;">Download Confidence</button>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <span class="result-badge">Uncertainty</span>
+                        <h3>Entropy Map</h3>
+                    </div>
+                    <div class="image-container">
+                        <img id="entropyImg" alt="Entropy Map" src="/static/img/placeholder.png">
+                    </div>
+                    <button id="downloadEntropyBtn" class="download-btn" style="display:none;">Download Entropy</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="metricsContainer" class="metrics-section" style="display:none;">
+            <div class="metrics-header">
+                <h2>Model Analytics</h2>
+                <p>Architecture details, runtime statistics and segmentation performance indicators.</p>
+            </div>
+            <div id="metricsGrid" class="metrics-grid"></div>
+        </section>
+
+        <footer class="app-footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <h3>AI Car Segmentation</h3>
+                    <p>Deep Learning demo for semantic segmentation of vehicles using PyTorch-based architectures.</p>
+                    <span class="footer-tag">Computer Vision • PyTorch • Deep Learning</span>
+                </div>
+
+                <div class="footer-right">
+                    <div class="footer-block">
+                        <h4>Models</h4>
+                        <ul>
+                            <li>UNet + MiT-B2</li>
+                            <li>DeepLabV3+</li>
+                            <li>UNet + ResNeXt</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-block">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>Semantic Segmentation</li>
+                            <li>Confidence Maps</li>
+                            <li>Entropy Estimation</li>
+                            <li>Model Metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-block">
+                        <h4>Tech Stack</h4>
+                        <ul>
+                            <li>PyTorch</li>
+                            <li>FastAPI</li>
+                            <li>OpenCV</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>Built for research & demo purposes</span>
+                <span>© 2026 AI Segmentation Project</span>
+            </div>
+        </footer>
+        <script src="/static/js/script.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+Class count
+----------------------------------------
+Background     : 263106611
+Car            : 92611415
+Wheels         : 19686192
+Lights         : 1972890
+Windows        : 16914129
+
+Weights
+----------------------------------------
+
+Inverse frequency
+  Background     : 0.0060
+  Car            : 0.0171
+  Wheels         : 0.0805
+  Lights         : 0.8028
+  Windows        : 0.0937
+
+Log smoothed
+  Background     : 0.0245
+  Car            : 0.0565
+  Wheels         : 0.1897
+  Lights         : 0.5192
+  Windows        : 0.2102
+
+Median frequency
+  Background     : 0.0060
+  Car            : 0.0171
+  Wheels         : 0.0805
+  Lights         : 0.8028
+  Windows        : 0.0937
+
+SQRT inverse
+  Background     : 0.0458
+  Car            : 0.0772
+  Wheels         : 0.1674
+  Lights         : 0.5289
+  Windows        : 0.1806
+
+Effective number
+  Background     : 0.0060
+  Car            : 0.0171
+  Wheels         : 0.0806
+  Lights         : 0.8025
+  Windows        : 0.0938
+
